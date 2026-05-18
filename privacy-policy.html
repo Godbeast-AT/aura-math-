@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Aura Math</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #0e0e10;
+      --ink-muted: #5a5a6a;
+      --ink-faint: #9898a8;
+      --surface: #f7f6f2;
+      --surface-card: #ffffff;
+      --accent: #1a1a2e;
+      --accent-warm: #e8622a;
+      --border: rgba(14,14,16,0.09);
+      --border-strong: rgba(14,14,16,0.18);
+      --tag-bg: #eeedf0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--surface);
+      color: var(--ink);
+      font-size: 16px;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--accent);
+      color: #fff;
+      padding: 64px 24px 56px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -60px;
+      width: 340px; height: 340px;
+      border-radius: 50%;
+      border: 48px solid rgba(232,98,42,0.15);
+      pointer-events: none;
+    }
+
+    header::after {
+      content: '÷ × + −';
+      position: absolute;
+      bottom: 16px; right: 28px;
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      letter-spacing: 6px;
+      opacity: 0.18;
+      color: #fff;
+    }
+
+    .header-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .app-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 100px;
+      padding: 5px 14px 5px 8px;
+      font-size: 13px;
+      font-family: 'DM Mono', monospace;
+      font-weight: 300;
+      letter-spacing: 0.3px;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 22px;
+    }
+
+    .app-badge span.dot {
+      width: 8px; height: 8px;
+      background: var(--accent-warm);
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    header h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(36px, 6vw, 56px);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -1.5px;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+
+    header h1 em {
+      font-style: normal;
+      color: var(--accent-warm);
+    }
+
+    .header-meta {
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+      font-family: 'DM Mono', monospace;
+      font-weight: 300;
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    /* ── LAYOUT ── */
+    .page-body {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    /* ── TOC ── */
+    .toc {
+      background: var(--surface-card);
+      border: 1px solid var(--border-strong);
+      border-radius: 18px;
+      padding: 28px 32px;
+      margin: 40px 0 48px;
+    }
+
+    .toc-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      margin-bottom: 16px;
+    }
+
+    .toc ol {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px 24px;
+    }
+
+    @media (max-width: 520px) {
+      .toc ol { grid-template-columns: 1fr; }
+    }
+
+    .toc ol li a {
+      font-size: 14px;
+      color: var(--ink-muted);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 0;
+      border-bottom: 1px solid transparent;
+      transition: color 0.15s, border-color 0.15s;
+    }
+
+    .toc ol li a:hover {
+      color: var(--accent-warm);
+      border-bottom-color: var(--accent-warm);
+    }
+
+    .toc ol li a .n {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--ink-faint);
+      min-width: 20px;
+    }
+
+    /* ── SECTIONS ── */
+    .section {
+      margin-bottom: 48px;
+      opacity: 0;
+      transform: translateY(18px);
+      animation: fadeUp 0.5s ease forwards;
+    }
+
+    .section:nth-child(1) { animation-delay: 0.05s; }
+    .section:nth-child(2) { animation-delay: 0.10s; }
+    .section:nth-child(3) { animation-delay: 0.15s; }
+    .section:nth-child(4) { animation-delay: 0.20s; }
+    .section:nth-child(5) { animation-delay: 0.25s; }
+    .section:nth-child(6) { animation-delay: 0.30s; }
+    .section:nth-child(7) { animation-delay: 0.35s; }
+    .section:nth-child(8) { animation-delay: 0.40s; }
+    .section:nth-child(9) { animation-delay: 0.45s; }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: none; }
+    }
+
+    .section-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      font-weight: 300;
+      color: var(--accent-warm);
+      background: rgba(232,98,42,0.08);
+      border: 1px solid rgba(232,98,42,0.2);
+      border-radius: 6px;
+      padding: 3px 8px;
+      margin-top: 4px;
+      white-space: nowrap;
+    }
+
+    .section h2 {
+      font-family: 'Syne', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.4px;
+      color: var(--ink);
+      line-height: 1.2;
+    }
+
+    .section p {
+      color: var(--ink-muted);
+      font-size: 15px;
+      line-height: 1.8;
+      margin-bottom: 14px;
+      font-weight: 300;
+    }
+
+    .section p:last-child { margin-bottom: 0; }
+
+    .section p strong {
+      color: var(--ink);
+      font-weight: 500;
+    }
+
+    /* ── CARDS ── */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      margin: 18px 0;
+    }
+
+    .card {
+      background: var(--surface-card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px 20px;
+    }
+
+    .card-icon {
+      font-size: 22px;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .card h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+
+    .card p {
+      font-size: 13px !important;
+      line-height: 1.6 !important;
+      margin: 0 !important;
+    }
+
+    /* ── HIGHLIGHT BOX ── */
+    .highlight {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      border-radius: 16px;
+      padding: 24px 28px;
+      margin: 18px 0;
+      color: #fff;
+    }
+
+    .highlight p {
+      color: rgba(255,255,255,0.75) !important;
+      font-size: 14px !important;
+    }
+
+    .highlight strong { color: #fff !important; }
+
+    /* ── LIST ── */
+    .policy-list {
+      list-style: none;
+      margin: 14px 0;
+    }
+
+    .policy-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 15px;
+      color: var(--ink-muted);
+      font-weight: 300;
+      padding: 7px 0;
+      border-bottom: 1px solid var(--border);
+      line-height: 1.6;
+    }
+
+    .policy-list li:last-child { border-bottom: none; }
+
+    .policy-list li::before {
+      content: '—';
+      color: var(--accent-warm);
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      margin-top: 3px;
+      flex-shrink: 0;
+    }
+
+    /* ── TAG ── */
+    .tag {
+      display: inline-block;
+      background: var(--tag-bg);
+      color: var(--ink-muted);
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: 100px;
+      letter-spacing: 0.3px;
+    }
+
+    .tag.green {
+      background: #e8f5e9;
+      color: #2e7d32;
+    }
+
+    /* ── CONTACT ── */
+    .contact-box {
+      background: var(--surface-card);
+      border: 1px solid var(--border-strong);
+      border-radius: 18px;
+      padding: 32px;
+      text-align: center;
+      margin-top: 12px;
+    }
+
+    .contact-box h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .contact-box p {
+      font-size: 14px;
+      color: var(--ink-muted);
+      font-weight: 300;
+      margin-bottom: 18px;
+    }
+
+    .contact-box a {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-family: 'Syne', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 12px 28px;
+      border-radius: 100px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .contact-box a:hover {
+      background: var(--accent-warm);
+      transform: scale(1.03);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--accent);
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+      padding: 28px 24px;
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      font-weight: 300;
+      letter-spacing: 0.3px;
+    }
+
+    footer span { color: var(--accent-warm); }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="app-badge"><span class="dot"></span> Aura Math — Privacy Policy</div>
+    <h1>Your data.<br><em>Your device.</em></h1>
+    <div class="header-meta">
+      <span>Effective: May 18, 2025</span>
+      <span>Last updated: May 18, 2025</span>
+      <span>Version 1.0</span>
+    </div>
+  </div>
+</header>
+
+<div class="page-body">
+
+  <nav class="toc" aria-label="Table of contents">
+    <div class="toc-label">Contents</div>
+    <ol>
+      <li><a href="#overview"><span class="n">01</span> Overview</a></li>
+      <li><a href="#data-collected"><span class="n">02</span> Data We Collect</a></li>
+      <li><a href="#local-storage"><span class="n">03</span> Local Storage</a></li>
+      <li><a href="#no-collection"><span class="n">04</span> What We Don't Collect</a></li>
+      <li><a href="#permissions"><span class="n">05</span> App Permissions</a></li>
+      <li><a href="#third-party"><span class="n">06</span> Third-Party Services</a></li>
+      <li><a href="#children"><span class="n">07</span> Children's Privacy</a></li>
+      <li><a href="#changes"><span class="n">08</span> Policy Changes</a></li>
+      <li><a href="#contact"><span class="n">09</span> Contact</a></li>
+    </ol>
+  </nav>
+
+  <main>
+
+    <section class="section" id="overview">
+      <div class="section-header">
+        <span class="section-num">01</span>
+        <h2>Overview</h2>
+      </div>
+      <p>Aura Math is a <strong>privacy-first calculator app</strong>. We built it with a simple principle: a calculator has no business knowing who you are, where you are, or what you're calculating.</p>
+      <p>This policy explains exactly what data exists when you use Aura Math, where it lives, and what we do with it (spoiler: nothing, because it never leaves your phone).</p>
+      <div class="highlight">
+        <p><strong>Short version:</strong> Aura Math stores your preferences and calculation history locally on your device only. We do not collect personal data. We do not have servers storing your information. We do not sell or share anything about you.</p>
+      </div>
+    </section>
+
+    <section class="section" id="data-collected">
+      <div class="section-header">
+        <span class="section-num">02</span>
+        <h2>Data We Collect</h2>
+      </div>
+      <p>Aura Math collects <strong>no personal data</strong>. There are no accounts, no sign-ins, no user profiles, and no tracking identifiers. The only data that exists is what you create yourself, stored locally on your device.</p>
+      <div class="card-grid">
+        <div class="card">
+          <span class="card-icon">⚙️</span>
+          <h3>App Preferences</h3>
+          <p>Theme choice, button animation settings, clear confirmation toggle — saved locally via your device's storage.</p>
+        </div>
+        <div class="card">
+          <span class="card-icon">🧮</span>
+          <h3>Calculation History</h3>
+          <p>Your recent calculations, if the history feature is enabled. Stored only on-device and clearable anytime.</p>
+        </div>
+        <div class="card">
+          <span class="card-icon">🎨</span>
+          <h3>Custom Settings</h3>
+          <p>Any custom themes, saved formulas, or widget configurations you create. Yours, on your device.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="local-storage">
+      <div class="section-header">
+        <span class="section-num">03</span>
+        <h2>Local Storage & How It Works</h2>
+      </div>
+      <p>Aura Math uses your device's local storage (via browser localStorage or Capacitor's native storage) to remember your preferences between sessions. This means:</p>
+      <ul class="policy-list">
+        <li>All data is stored directly on your device — not on any server.</li>
+        <li>No data is transmitted over the internet as part of normal app usage.</li>
+        <li>Uninstalling the app removes all locally stored data completely.</li>
+        <li>You can clear app data at any time through your device's settings.</li>
+        <li>Nothing is backed up to cloud services by the app itself.</li>
+      </ul>
+      <p>The data saved locally is minimal: a JSON object containing your selected theme, toggle states for settings, and optionally your recent calculation history. None of this identifies you as a person.</p>
+    </section>
+
+    <section class="section" id="no-collection">
+      <div class="section-header">
+        <span class="section-num">04</span>
+        <h2>What We Don't Collect</h2>
+      </div>
+      <p>To be completely clear, Aura Math does <strong>not</strong> collect, transmit, or store any of the following:</p>
+      <ul class="policy-list">
+        <li>Your name, email address, phone number, or any contact information</li>
+        <li>Your location or GPS data</li>
+        <li>Device identifiers, advertising IDs, or IMEI numbers</li>
+        <li>IP address or network information</li>
+        <li>Usage analytics or behavioral tracking data</li>
+        <li>Crash reports or diagnostic logs sent to any server</li>
+        <li>Camera, microphone, or contacts data</li>
+        <li>Financial information of any kind</li>
+      </ul>
+      <p>We do not use any advertising SDKs, analytics platforms, or tracking libraries inside the app. <span class="tag green">No ads. No trackers. No surveillance.</span></p>
+    </section>
+
+    <section class="section" id="permissions">
+      <div class="section-header">
+        <span class="section-num">05</span>
+        <h2>App Permissions</h2>
+      </div>
+      <p>Aura Math requests only the permissions it genuinely needs. Below is a full list of what is requested and why:</p>
+      <ul class="policy-list">
+        <li><strong>Storage / Local Storage</strong> — Required to save your theme and settings preferences between sessions.</li>
+        <li><strong>Internet (future features)</strong> — May be requested in future versions for optional live currency exchange rates. This will be opt-in and clearly disclosed when introduced.</li>
+        <li><strong>Camera (future features)</strong> — If OCR-based math scanning is added, camera permission will be requested only when you activate that feature.</li>
+        <li><strong>Microphone (future features)</strong> — If voice calculator input is added, microphone permission will be requested only when you use it.</li>
+      </ul>
+      <p>Any new permissions required by future features will be disclosed in an updated privacy policy before the feature is released.</p>
+    </section>
+
+    <section class="section" id="third-party">
+      <div class="section-header">
+        <span class="section-num">06</span>
+        <h2>Third-Party Services</h2>
+      </div>
+      <p>In its current version, Aura Math does not integrate with any third-party analytics, advertising, or data collection services.</p>
+      <p>The app is built with <strong>React</strong>, <strong>Vite</strong>, and <strong>Capacitor</strong> — all open-source frameworks that do not collect user data on their own.</p>
+      <p>If future versions of the app introduce optional third-party integrations (such as live currency rates from an API), those will be clearly documented here, opt-in only, and governed by the respective provider's privacy policy. We will never enable data collection without your knowledge.</p>
+      <p>Aura Math is distributed via the Google Play Store and/or Apple App Store. Those platforms have their own privacy policies governing app distribution, device analytics, and platform-level data — those policies are separate from this one.</p>
+    </section>
+
+    <section class="section" id="children">
+      <div class="section-header">
+        <span class="section-num">07</span>
+        <h2>Children's Privacy</h2>
+      </div>
+      <p>Aura Math is suitable for users of all ages, including children. Because we collect no personal data and require no account creation, the app is fully compliant with children's privacy laws including <strong>COPPA</strong> (Children's Online Privacy Protection Act) and <strong>GDPR-K</strong> provisions.</p>
+      <p>We do not knowingly collect any data from children under 13, nor do we collect data from any user regardless of age. Parents and guardians can feel confident that installing Aura Math on a child's device poses no privacy risk.</p>
+    </section>
+
+    <section class="section" id="changes">
+      <div class="section-header">
+        <span class="section-num">08</span>
+        <h2>Changes to This Policy</h2>
+      </div>
+      <p>We may update this Privacy Policy as Aura Math grows and new features are added. When we do:</p>
+      <ul class="policy-list">
+        <li>The "Last updated" date at the top of this page will reflect the revision date.</li>
+        <li>Significant changes — especially those involving new data collection — will be announced via an in-app notice.</li>
+        <li>We will never retroactively change our data practices in a way that is less protective of your privacy without explicit consent.</li>
+      </ul>
+      <p>We encourage you to review this policy periodically. Continued use of the app after changes are posted constitutes acceptance of the updated policy.</p>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="section-header">
+        <span class="section-num">09</span>
+        <h2>Contact Us</h2>
+      </div>
+      <p>Have a question about this policy, or want to report a privacy concern? We're happy to hear from you.</p>
+      <div class="contact-box">
+        <h3>Get in touch</h3>
+        <p>Feel free to reach out with any privacy questions or concerns.</p>
+        <a href="mailto:godbeast.at0@gmail.com">godbeast.at0@gmail.com</a>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  <p>© 2025 Aura Math. Built with privacy by default. &nbsp;·&nbsp; <span>No data collected. No data shared.</span></p>
+</footer>
+
+</body>
+</html>
